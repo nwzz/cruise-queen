@@ -62,7 +62,7 @@
             <div class="input-group f-class">
                 <div>
                     <label for="">First Class ($150)</label>
-                    <input id="business-ticket-input" class="inp-style inp-width" type="number" name="">
+                    <input id="business-ticket-input" class="inp-style inp-width" type="number" value='1'>
                 </div>
                 <div class="plus-minus-btn"><br>
                     <p><span id="business-plus-btn" class="btn-decoration"><button
@@ -74,7 +74,7 @@
             <div class="input-group f-class">
                 <div>
                     <label for="">Economy ($100)</label>
-                    <input class="inp-style inp-width" type="number" name="">
+                    <input class="inp-style inp-width" type="number" name=""value="">
                 </div>
                 <div class="plus-minus-btn"><br>
                     <p><span class="btn-decoration"><button class="btn btn-success">+</button></span><span
@@ -116,16 +116,29 @@
 
         var businessPlusBtn = document.getElementById('business-plus-btn');
         businessPlusBtn.addEventListener('click', function(){
-            document.getElementById('business-ticket-input').value = 0;
-            var businessTicketInput = document.getElementById('business-ticket-input').value;
-            var businessTicketAmount = parseFloat(businessTicketInput);
+
+            const businessTicketInput = document.getElementById('business-ticket-input');
+            const businessTicketAmount = parseInt(businessTicketInput.value);
+            //console.log(businessTicketAmount);
             const businessTicketDeal = businessTicketAmount + 1;
-            console.log(businessTicketDeal);
+            businessTicketInput.value = businessTicketDeal;
+            
             document.getElementById('business-ticket-input').innerText = businessTicketDeal;
 
-
-        
         })
+
+        var businessMinusBtn = document.getElementById('business-minus-btn');
+        businessMinusBtn.addEventListener('click', function(){
+
+            const businessTicketInput = document.getElementById('business-ticket-input');
+            const businessTicketAmount = parseInt(businessTicketInput.value);
+            //console.log(businessTicketAmount);
+            const businessTicketDeal = businessTicketAmount - 1;
+            businessTicketInput.value = businessTicketDeal;
+            
+            document.getElementById('business-ticket-input').innerText = businessTicketDeal;
+
+            })
 
     </script>
 </body>
