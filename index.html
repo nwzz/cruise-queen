@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curise Booking</title>
+    <title>Cruise Booking</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap"
@@ -117,28 +117,29 @@
         var businessPlusBtn = document.getElementById('business-plus-btn');
         businessPlusBtn.addEventListener('click', function(){
 
-            const businessTicketInput = document.getElementById('business-ticket-input');
-            const businessTicketAmount = parseInt(businessTicketInput.value);
-            //console.log(businessTicketAmount);
-            const businessTicketDeal = businessTicketAmount + 1;
-            businessTicketInput.value = businessTicketDeal;
+            const ticketInput = document.getElementById('business-ticket-input');
+            const ticketAmount = parseInt(ticketInput.value);
+            const ticketDeal = ticketAmount + 1;
+            ticketInput.value = ticketDeal;
             
-            document.getElementById('business-ticket-input').innerText = businessTicketDeal;
+            document.getElementById('business-ticket-input').innerText = ticketDeal;
 
         })
 
         var businessMinusBtn = document.getElementById('business-minus-btn');
         businessMinusBtn.addEventListener('click', function(){
 
-            const businessTicketInput = document.getElementById('business-ticket-input');
-            const businessTicketAmount = parseInt(businessTicketInput.value);
-            //console.log(businessTicketAmount);
-            const businessTicketDeal = businessTicketAmount - 1;
-            businessTicketInput.value = businessTicketDeal;
-            
-            document.getElementById('business-ticket-input').innerText = businessTicketDeal;
-
+            const ticketInput = document.getElementById('business-ticket-input');
+            const ticketAmount = parseInt(ticketInput.value);
+            if (ticketAmount >0)
+                {
+                const ticketDeal = ticketAmount - 1;
+                ticketInput.value = ticketDeal;
+                document.getElementById('business-ticket-input').innerText = ticketDeal;
+                }
             })
+
+
 
     </script>
 </body>
