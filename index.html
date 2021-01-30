@@ -39,14 +39,14 @@
         </div>
 
 
-        <div class="booking-form">
+        <div  id="cruise-booking-form"  class="booking-form">
             <h3>Book Ocean Time</h3>
             <div class="input-group">
-                <label for="">Flying From</label>
+                <label for="">Starting From</label>
                 <input class="inp-style" type="text" name="" placeholder="Dhaka, Bangladesh">
             </div>
             <div class="input-group">
-                <label for="">Flying To</label>
+                <label for="">Ending To</label>
                 <input class="inp-style" type="text" name="" placeholder="New York, United States">
             </div>
             <div class="inputs">
@@ -108,7 +108,10 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn-style">Book Now</button>
+                <button id="booking-btn" class="btn-style">Book Now</button>
+            </div>
+            <div class="para-decor" id="thanks-note" class="text-center">
+                <h2 >Thank You Sir. Have a Great Journey With Us </h2>
             </div>
     </main>
 
@@ -192,7 +195,8 @@
             }
 
         function ticketFairDecrease (fair){
-            var subtotal = document.getElementById('subtotal').innerText;
+            
+                var subtotal = document.getElementById('subtotal').innerText;
             const subtotalAmount = parseFloat(subtotal); 
             const subtotalDeal = subtotalAmount - fair;  
             subtotal.value = subtotalDeal;
@@ -210,7 +214,16 @@
             total.value = totalDeal;
             document.getElementById('total').innerText = totalDeal;
 
+            
         }
+        var bookingBtn = document.getElementById('booking-btn');
+        bookingBtn.addEventListener('click', function () {
+            var cruiseBookingForm = document.getElementById('cruise-booking-form');
+            cruiseBookingForm.style.display = 'none';
+            const thanksNote = document.getElementById('thanks-note');
+            thanksNote.style.display = 'block';
+            
+        })
 
     </script>
 </body>
