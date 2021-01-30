@@ -29,7 +29,7 @@
     </header>
 
     <!--Booking Section-->
-    <main class="main-content container">
+    <main id="cruise-booking-form" class="main-content container">
 
         <div class="booking-content">
             <h1>Cruise Queen</h1>
@@ -39,7 +39,7 @@
         </div>
 
 
-        <div  id="cruise-booking-form"  class="booking-form">
+        <div class="booking-form">
             <h3>Book Ocean Time</h3>
             <div class="input-group">
                 <label for="">Starting From</label>
@@ -74,11 +74,12 @@
             <div class="input-group f-class">
                 <div>
                     <label for="">Economy ($100)</label>
-                    <input id="economy-ticket-input" class="inp-style inp-width" type="number" name=""value="1">
+                    <input id="economy-ticket-input" class="inp-style inp-width" type="number" name="" value="1">
                 </div>
                 <div class="plus-minus-btn"><br>
-                    <p><span id="economy-plus-btn" class="btn-decoration"><button class="btn btn-success">+</button></span><span
-                            id="economy-minus-btn" class="btn-decoration"><button class="btn btn-success">-</button></span> </p>
+                    <p><span id="economy-plus-btn" class="btn-decoration"><button
+                                class="btn btn-success">+</button></span><span id="economy-minus-btn"
+                            class="btn-decoration"><button class="btn btn-success">-</button></span> </p>
                 </div>
                 <div class="calculations">
                     <div class="amount">
@@ -110,43 +111,50 @@
                 </div>
                 <button id="booking-btn" class="btn-style">Book Now</button>
             </div>
-            <div class="para-decor" id="thanks-note" class="text-center">
-                <h2 >Thank You Sir. Have a Great Journey With Us </h2>
-            </div>
-    </main>
 
+    </main>
+    <div id="thanks-note" class="text-center para-decor">
+        <h1>Thank You Sir.Thanks for the Reservation. Have a Great Journey With Us. </h1><br><br><br>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere quisquam dolore placeat porro recusandae amet
+            optio non accusantium repudiandae quo earum nostrum dicta odio officia natus debitis quia corrupti, est
+            temporibus soluta quibusdam blanditiis? Iure enim mollitia laudantium soluta libero dolorum rem, itaque non
+            id repellat accusamus quibusdam, culpa animi!</p>
+    </div>
     <script>
 
+                /*plus counts for business class tickets*/
+
         var businessPlusBtn = document.getElementById('business-plus-btn');
-        businessPlusBtn.addEventListener('click', function(){
+        businessPlusBtn.addEventListener('click', function () {
 
             const ticketInput = document.getElementById('business-ticket-input');
             const ticketAmount = parseInt(ticketInput.value);
             const ticketDeal = ticketAmount + 1;
             ticketInput.value = ticketDeal;
             document.getElementById('business-ticket-input').innerText = ticketDeal;
-        
-            ticketFairCalculations (150);
+
+            ticketFairCalculations(150);    /*ticket fair calculation function*/
 
 
         })
+              /*minus counts for business class tickets*/
 
         var businessMinusBtn = document.getElementById('business-minus-btn');
-        businessMinusBtn.addEventListener('click', function(){
+        businessMinusBtn.addEventListener('click', function () {
 
             const ticketInput = document.getElementById('business-ticket-input');
             const ticketAmount = parseInt(ticketInput.value);
-            if (ticketAmount >0)
-                {
+            if (ticketAmount > 0) {
                 const ticketDeal = ticketAmount - 1;
                 ticketInput.value = ticketDeal;
                 document.getElementById('business-ticket-input').innerText = ticketDeal;
-                }
-            ticketFairDecrease (150);
+            }
+            ticketFairDecrease(150);
         })
+                /*plus counts for economy class tickets*/
 
         var economyPlusBtn = document.getElementById('economy-plus-btn');
-        economyPlusBtn.addEventListener('click', function(){
+        economyPlusBtn.addEventListener('click', function () {
             const ticketInput = document.getElementById('economy-ticket-input');
             const ticketAmount = parseInt(ticketInput.value);
             const ticketDeal = ticketAmount + 1;
@@ -154,75 +162,78 @@
             document.getElementById('economy-ticket-input').innerText = ticketDeal;
 
             ticketFairCalculations(100);
-        
-        
+
+
         })
+                /*minus counts for economy class tickets*/
 
         var economyMinusBtn = document.getElementById('economy-minus-btn');
-        economyMinusBtn.addEventListener('click', function(){
+        economyMinusBtn.addEventListener('click', function () {
             const ticketInput = document.getElementById('economy-ticket-input');
             const ticketAmount = parseInt(ticketInput.value);
-            if (ticketAmount >0)
-                {
+            if (ticketAmount > 0) {
                 const ticketDeal = ticketAmount - 1;
                 ticketInput.value = ticketDeal;
                 document.getElementById('economy-ticket-input').innerText = ticketDeal;
-                }
-            ticketFairDecrease (100);
-        })
-        
-        
-
-        function ticketFairCalculations (fair){
-                var subtotal = document.getElementById('subtotal').innerText;
-            const subtotalAmount = parseFloat(subtotal); 
-            const subtotalDeal = subtotalAmount + fair;  
-            subtotal.value = subtotalDeal;
-            document.getElementById('subtotal').innerText =subtotalDeal;
-            
-            var tax = document.getElementById('vat').innerText;
-            const taxAmount = parseInt(tax);
-            const taxDeal = subtotalDeal*0.10;
-            tax.value = taxDeal;
-            document.getElementById('vat').innerText = taxDeal;
-            
-            var total = document.getElementById('total').innerText;
-            const totalAmount = parseInt(total);
-            const totalDeal = subtotalDeal + taxDeal;
-            total.value = totalDeal;
-            document.getElementById('total').innerText = totalDeal;
-
             }
+            ticketFairDecrease(100);
+        })
 
-        function ticketFairDecrease (fair){
-            
-                var subtotal = document.getElementById('subtotal').innerText;
-            const subtotalAmount = parseFloat(subtotal); 
-            const subtotalDeal = subtotalAmount - fair;  
+                /*Functions for subtotal vat and total calculations*/
+
+        function ticketFairCalculations(fair) {
+            var subtotal = document.getElementById('subtotal').innerText;
+            const subtotalAmount = parseFloat(subtotal);
+            const subtotalDeal = subtotalAmount + fair;
             subtotal.value = subtotalDeal;
-            document.getElementById('subtotal').innerText =subtotalDeal;
-            
+            document.getElementById('subtotal').innerText = subtotalDeal;
+
             var tax = document.getElementById('vat').innerText;
             const taxAmount = parseInt(tax);
-            const taxDeal = subtotalDeal*0.10;
+            const taxDeal = subtotalDeal * 0.10;
             tax.value = taxDeal;
             document.getElementById('vat').innerText = taxDeal;
-            
+
             var total = document.getElementById('total').innerText;
             const totalAmount = parseInt(total);
             const totalDeal = subtotalDeal + taxDeal;
             total.value = totalDeal;
             document.getElementById('total').innerText = totalDeal;
 
-            
         }
+
+        function ticketFairDecrease(fair) {
+
+            var subtotal = document.getElementById('subtotal').innerText;
+            const subtotalAmount = parseFloat(subtotal);
+            const subtotalDeal = subtotalAmount - fair;
+            subtotal.value = subtotalDeal;
+            document.getElementById('subtotal').innerText = subtotalDeal;
+
+            var tax = document.getElementById('vat').innerText;
+            const taxAmount = parseInt(tax);
+            const taxDeal = subtotalDeal * 0.10;
+            tax.value = taxDeal;
+            document.getElementById('vat').innerText = taxDeal;
+
+            var total = document.getElementById('total').innerText;
+            const totalAmount = parseInt(total);
+            const totalDeal = subtotalDeal + taxDeal;
+            total.value = totalDeal;
+            document.getElementById('total').innerText = totalDeal;
+
+
+        }
+
+                /*Booking Now option Activation*/
+
         var bookingBtn = document.getElementById('booking-btn');
         bookingBtn.addEventListener('click', function () {
             var cruiseBookingForm = document.getElementById('cruise-booking-form');
             cruiseBookingForm.style.display = 'none';
             const thanksNote = document.getElementById('thanks-note');
             thanksNote.style.display = 'block';
-            
+
         })
 
     </script>
