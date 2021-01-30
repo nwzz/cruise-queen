@@ -74,11 +74,11 @@
             <div class="input-group f-class">
                 <div>
                     <label for="">Economy ($100)</label>
-                    <input class="inp-style inp-width" type="number" name=""value="">
+                    <input id="economy-ticket-input" class="inp-style inp-width" type="number" name=""value="1">
                 </div>
                 <div class="plus-minus-btn"><br>
-                    <p><span class="btn-decoration"><button class="btn btn-success">+</button></span><span
-                            class="btn-decoration"><button class="btn btn-success">-</button></span> </p>
+                    <p><span id="economy-plus-btn" class="btn-decoration"><button class="btn btn-success">+</button></span><span
+                            id="economy-minus-btn" class="btn-decoration"><button class="btn btn-success">-</button></span> </p>
                 </div>
                 <div class="calculations">
                     <div class="amount">
@@ -86,7 +86,7 @@
                             <p>Subtotal</p>
                         </div>
                         <div class="right">
-                            <p>$500</p>
+                            <p>$<span id="subtotal">00</span></p>
                         </div>
                     </div>
 
@@ -95,7 +95,7 @@
                             <p>Charge 10% VAT</p>
                         </div>
                         <div class="right">
-                            <p>$50</p>
+                            <p>$ <span id="vat">00</span></p>
                         </div>
                     </div>
                     <hr>
@@ -104,7 +104,7 @@
                             <h4>Total</h4>
                         </div>
                         <div class="right">
-                            <p>$550</p>
+                            <p>$ <span id="total">00</span></p>
                         </div>
                     </div>
                 </div>
@@ -121,8 +121,10 @@
             const ticketAmount = parseInt(ticketInput.value);
             const ticketDeal = ticketAmount + 1;
             ticketInput.value = ticketDeal;
-            
             document.getElementById('business-ticket-input').innerText = ticketDeal;
+        
+            ticketFairCalculations (150);
+
 
         })
 
@@ -137,9 +139,78 @@
                 ticketInput.value = ticketDeal;
                 document.getElementById('business-ticket-input').innerText = ticketDeal;
                 }
-            })
+            ticketFairDecrease (150);
+        })
 
+        var economyPlusBtn = document.getElementById('economy-plus-btn');
+        economyPlusBtn.addEventListener('click', function(){
+            const ticketInput = document.getElementById('economy-ticket-input');
+            const ticketAmount = parseInt(ticketInput.value);
+            const ticketDeal = ticketAmount + 1;
+            ticketInput.value = ticketDeal;
+            document.getElementById('economy-ticket-input').innerText = ticketDeal;
 
+            ticketFairCalculations(100);
+        
+        
+        })
+
+        var economyMinusBtn = document.getElementById('economy-minus-btn');
+        economyMinusBtn.addEventListener('click', function(){
+            const ticketInput = document.getElementById('economy-ticket-input');
+            const ticketAmount = parseInt(ticketInput.value);
+            if (ticketAmount >0)
+                {
+                const ticketDeal = ticketAmount - 1;
+                ticketInput.value = ticketDeal;
+                document.getElementById('economy-ticket-input').innerText = ticketDeal;
+                }
+            ticketFairDecrease (100);
+        })
+        
+        
+
+        function ticketFairCalculations (fair){
+                var subtotal = document.getElementById('subtotal').innerText;
+            const subtotalAmount = parseFloat(subtotal); 
+            const subtotalDeal = subtotalAmount + fair;  
+            subtotal.value = subtotalDeal;
+            document.getElementById('subtotal').innerText =subtotalDeal;
+            
+            var tax = document.getElementById('vat').innerText;
+            const taxAmount = parseInt(tax);
+            const taxDeal = subtotalDeal*0.10;
+            tax.value = taxDeal;
+            document.getElementById('vat').innerText = taxDeal;
+            
+            var total = document.getElementById('total').innerText;
+            const totalAmount = parseInt(total);
+            const totalDeal = subtotalDeal + taxDeal;
+            total.value = totalDeal;
+            document.getElementById('total').innerText = totalDeal;
+
+            }
+
+        function ticketFairDecrease (fair){
+            var subtotal = document.getElementById('subtotal').innerText;
+            const subtotalAmount = parseFloat(subtotal); 
+            const subtotalDeal = subtotalAmount - fair;  
+            subtotal.value = subtotalDeal;
+            document.getElementById('subtotal').innerText =subtotalDeal;
+            
+            var tax = document.getElementById('vat').innerText;
+            const taxAmount = parseInt(tax);
+            const taxDeal = subtotalDeal*0.10;
+            tax.value = taxDeal;
+            document.getElementById('vat').innerText = taxDeal;
+            
+            var total = document.getElementById('total').innerText;
+            const totalAmount = parseInt(total);
+            const totalDeal = subtotalDeal + taxDeal;
+            total.value = totalDeal;
+            document.getElementById('total').innerText = totalDeal;
+
+        }
 
     </script>
 </body>
